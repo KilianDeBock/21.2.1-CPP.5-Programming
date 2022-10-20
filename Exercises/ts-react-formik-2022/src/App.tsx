@@ -1,10 +1,11 @@
 import { Field, Form, Formik } from "formik";
-import { TextField } from "./components/TextField.component";
 import { Button } from "./components/Button.component";
 import * as yup from "yup";
+import { TextFieldError } from "./components/TextFieldError.component";
 
 const validationSchema = yup.object({
-  firstName: yup.string(),
+  firstName: yup.string().required().max(10),
+  lastName: yup.string().required().max(10),
 });
 
 function App() {
@@ -37,7 +38,7 @@ function App() {
             <Field
               placeholder={"De Bock"}
               name={"lastName"}
-              as={TextField}
+              as={TextFieldError}
               type={"input"}
             />
           </div>
