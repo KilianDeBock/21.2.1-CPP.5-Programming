@@ -9,7 +9,7 @@ export const TextFieldError = ({ ...props }: TextFieldProps) => {
 
   return (
     <>
-      <TextField {...field} name={props.name} value={props.value}></TextField>
+      <TextField {...field} name={props.name} value={props.value} />
       {errorText ? (
         <div
           style={{

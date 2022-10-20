@@ -1,7 +1,8 @@
-import { Field, Form, Formik } from "formik";
+import { Form, Formik } from "formik";
 import { Button } from "./components/Button.component";
 import * as yup from "yup";
 import { TextFieldError } from "./components/TextFieldError.component";
+import { Radio } from "./components/Radio.component";
 
 const validationSchema = yup.object({
   firstName: yup.string().required().max(10),
@@ -14,6 +15,7 @@ function App() {
       initialValues={{
         firstName: "",
         lastName: "",
+        myOptions: "Option2",
       }}
       validationSchema={validationSchema}
       onSubmit={(values, { setSubmitting }) => {
@@ -35,13 +37,18 @@ function App() {
             />
           </div>
           <div>
-            <Field
-              placeholder={"De Bock"}
-              name={"lastName"}
-              as={TextFieldError}
-              type={"input"}
-            />
+            <TextFieldError value={values.lastName} name="lastName" />
           </div>
+          <Radio value="Option1" label={"Option 1"} name={"myOptions"} />
+          <Radio value="Option2" label={"Option 2"} name={"myOptions"} />
+          {/*<div>*/}
+          {/*  <Field*/}
+          {/*    placeholder={"De Bock"}*/}
+          {/*    name={"lastName"}*/}
+          {/*    as={TextFieldError}*/}
+          {/*    type={"input"}*/}
+          {/*  />*/}
+          {/*</div>*/}
           <div>
             <Button type={"submit"} disabled={isSubmitting}>
               Submit!
